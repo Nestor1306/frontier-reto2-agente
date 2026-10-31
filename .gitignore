@@ -1,0 +1,26 @@
+# Credenciales privadas
+.env
+.env.*
+!.env.example
+
+# Entornos de Python
+.venv/
+venv/
+
+# Archivos temporales
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+*.bak
+*.log
+
+# macOS
+.DS_Store
+
+# Datos locales del agente: capturas, trazas, resultados y memoria
+capturas/
+trazas/
+resultados/
+data/
+*.png

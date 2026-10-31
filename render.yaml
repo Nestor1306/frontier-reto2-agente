@@ -1,0 +1,27 @@
+# Blueprint de Render: servicio web Docker con el Dockerfile de este repo.
+# plan "starter" (de pago) no se suspende por inactividad; el gratuito sí, y su arranque en frío
+# rompería el requisito de que POST /tasks responda en menos de 2 s.
+services:
+  - type: web
+    name: frontier-agente
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    numInstances: 1          # las tareas viven en memoria: una sola instancia
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: FRONTIER_TEAM_TOKEN
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: anthropic/claude-sonnet-5.5
+      - key: VOICE_TOOL_TOKEN
+        sync: false
+      - key: VOZ_VNC_URL
+        sync: false
+      - key: VOZ_VNC_PASSWORD
+        sync: false
+      - key: VOZ_SOLO_LECTURA
+        value: "1"
